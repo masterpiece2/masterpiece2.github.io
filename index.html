@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的个人主页 | My Portfolio</title>
+    <style>
+        /* 全局样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* 头部/个人信息区 */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 3px solid #007bff;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* 模块通用样式 */
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #007bff;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* 技能标签 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .skill-tag {
+            background: #e7f3ff;
+            color: #007bff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* 项目列表 */
+        .project-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        @media (min-width: 600px) {
+            .project-list {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+            border-color: #007bff;
+        }
+
+        .project-card h3 {
+            font-size: 1.2rem;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* 联系方式 */
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #24292e;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #444;
+        }
+
+        .btn.email {
+            background: #007bff;
+        }
+
+        .btn.email:hover {
+            background: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <img src="https://github.com/identicons/guest.png" alt="头像" class="avatar">
+            <h1>你好，我是 [你的名字]</h1>
+            <p class="tagline">🎯 正在探索世界的技术狂热者 / 开发者</p>
+        </header>
+
+        <section id="about">
+            <h2>关于我</h2>
+            <p>这里写一段你自己的简短介绍。例如：我是一名热衷于前端开发/数据分析/全栈开发的学生/工程师。喜欢构建好玩且有用的项目，热衷于开源社区和新技术探索。</p>
+        </section>
+
+        <section id="skills">
+            <h2>核心技能</h2>
+            <div class="skills-container">
+                <span class="skill-tag">HTML / CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">Vue.js / React</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">Git / GitHub</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>开源项目</h2>
+            <div class="project-list">
+                <a href="https://github.com/你的用户名/项目名" class="project-card" target="_blank">
+                    <h3>🚀 项目名称一</h3>
+                    <p>这是一个关于什么什么的优秀项目，使用了 HTML、CSS 和 JS 编写，解决了一个痛点问题。</p>
+                </a>
+                <a href="https://github.com/你的用户名/项目名" class="project-card" target="_blank">
+                    <h3>🛠️ 项目名称二</h3>
+                    <p>另一个个人独立开发的高能工具，支持自动化操作和跨平台部署。</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>联系我</h2>
+            <p style="text-align: center; margin-bottom: 15px;">如果你对我的项目感兴趣，欢迎通过以下方式联系我：</p>
+            <div class="contact-links">
+                <a href="https://github.com/你的用户名" class="btn" target="_blank">GitHub</a>
+                <a href="mailto:your-email@example.com" class="btn email">发送邮件</a>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 [你的名字]. Built with ❤️ using HTML & CSS</p>
+        </footer>
+    </div>
+
+</body>
+</html>
