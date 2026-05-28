@@ -1,226 +1,352 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的个人主页 | My Portfolio</title>
-    <style>
-        /* 全局样式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="masterpiece2 的个人主页 — 开发者与技术探索者">
+  <meta name="author" content="masterpiece2">
+  <title>masterpiece2 | 个人主页</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
-            padding: 20px;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.7;
+      color: #334155;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
 
-        /* 头部/个人信息区 */
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            object-fit: cover;
-            border: 3px solid #007bff;
-        }
+    .card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
 
-        h1 {
-            font-size: 2.2rem;
-            color: #222;
-            margin-bottom: 10px;
-        }
+    /* Header */
+    .header {
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 36px;
+    }
 
-        .tagline {
-            font-size: 1.1rem;
-            color: #666;
-            font-style: italic;
-        }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.18);
+      margin-bottom: 20px;
+    }
 
-        /* 模块通用样式 */
-        section {
-            margin-bottom: 35px;
-        }
+    .name {
+      font-size: clamp(1.75rem, 5vw, 2.25rem);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
 
-        h2 {
-            font-size: 1.5rem;
-            color: #007bff;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-        }
+    .tagline {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #64748b;
+      font-weight: 400;
+    }
 
-        p {
-            color: #555;
-            font-size: 1rem;
-        }
+    /* Section titles */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        /* 技能标签 */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #3b82f6, #6366f1);
+      border-radius: 2px;
+    }
 
-        .skill-tag {
-            background: #e7f3ff;
-            color: #007bff;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
+    .about-text {
+      color: #475569;
+      font-size: 1rem;
+      line-height: 1.85;
+    }
 
-        /* 项目列表 */
-        .project-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-        }
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-        @media (min-width: 600px) {
-            .project-list {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+    .skill-tag {
+      position: relative;
+      overflow: hidden;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1d4ed8;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-        .project-card {
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-decoration: none;
-            color: inherit;
-        }
+    .skill-tag::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.7),
+        transparent
+      );
+      animation: shimmer 3s infinite;
+    }
 
-        .project-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.08);
-            border-color: #007bff;
-        }
+    @keyframes shimmer {
+      0% { left: -100%; }
+      50%, 100% { left: 150%; }
+    }
 
-        .project-card h3 {
-            font-size: 1.2rem;
-            color: #222;
-            margin-bottom: 8px;
-        }
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+    }
 
-        .project-card p {
-            font-size: 0.9rem;
-            color: #666;
-        }
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
 
-        /* 联系方式 */
-        .contact-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
+    @media (min-width: 560px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: #24292e;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
+    .project-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: #fafbfc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 22px 20px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
 
-        .btn:hover {
-            background: #444;
-        }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      border-color: #93c5fd;
+    }
 
-        .btn.email {
-            background: #007bff;
-        }
+    .project-icon {
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+    }
 
-        .btn.email:hover {
-            background: #0056b3;
-        }
+    .project-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            font-size: 0.85rem;
-            color: #888;
-        }
-    </style>
+    .project-card p {
+      font-size: 0.875rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    .project-link-hint {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #3b82f6;
+      font-weight: 500;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
+
+    .contact-text {
+      color: #64748b;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-github {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 32px;
+      background: #0f172a;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25);
+    }
+
+    .btn-github:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.3);
+    }
+
+    .btn-github svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 8px 0 0;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    footer a {
+      color: #64748b;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #3b82f6;
+    }
+  </style>
 </head>
 <body>
+  <div class="page">
+    <!-- 头部 -->
+    <header class="card header">
+      <img
+        class="avatar"
+        src="https://github.com/masterpiece2.png"
+        alt="masterpiece2 头像"
+        width="120"
+        height="120"
+      >
+      <h1 class="name">masterpiece2</h1>
+      <p class="tagline">🎯 正在探索世界的技术狂热者 / 开发者</p>
+    </header>
 
-    <div class="container">
-        <header>
-            <img src="https://github.com/identicons/guest.png" alt="头像" class="avatar">
-            <h1>你好，我是 [你的名字]</h1>
-            <p class="tagline">🎯 正在探索世界的技术狂热者 / 开发者</p>
-        </header>
+    <!-- 关于我 -->
+    <section class="card">
+      <h2 class="section-title">关于我</h2>
+      <p class="about-text">
+        你好，我是 masterpiece2。一名热爱编程与技术的开发者，专注于 Web 开发与软件工程实践。
+        我喜欢将想法转化为可运行的代码，享受在开源社区中学习、分享与协作的过程。
+        日常关注前端技术、自动化工具与 AI 应用，相信持续学习是程序员最好的投资。
+        欢迎浏览我的项目，也期待与志同道合的朋友交流技术心得。
+      </p>
+    </section>
 
-        <section id="about">
-            <h2>关于我</h2>
-            <p>这里写一段你自己的简短介绍。例如：我是一名热衷于前端开发/数据分析/全栈开发的学生/工程师。喜欢构建好玩且有用的项目，热衷于开源社区和新技术探索。</p>
-        </section>
+    <!-- 核心技能 -->
+    <section class="card">
+      <h2 class="section-title">核心技能</h2>
+      <div class="skills">
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Responsive Design</span>
+        <span class="skill-tag">GitHub Pages</span>
+      </div>
+    </section>
 
-        <section id="skills">
-            <h2>核心技能</h2>
-            <div class="skills-container">
-                <span class="skill-tag">HTML / CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Vue.js / React</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Git / GitHub</span>
-            </div>
-        </section>
+    <!-- 开源项目 -->
+    <section class="card">
+      <h2 class="section-title">开源项目</h2>
+      <div class="projects-grid">
+        <a class="project-card" href="https://github.com/masterpiece2" target="_blank" rel="noopener noreferrer">
+          <div class="project-icon">🚀</div>
+          <h3>GitHub 主页</h3>
+          <p>浏览我的全部开源仓库，了解正在进行的项目与技术实验。</p>
+          <span class="project-link-hint">查看仓库 →</span>
+        </a>
+        <a class="project-card" href="https://github.com/masterpiece2/mathtype" target="_blank" rel="noopener noreferrer">
+          <div class="project-icon">📐</div>
+          <h3>mathtype</h3>
+          <p>数学公式与排版相关的实用工具项目，持续维护与迭代中。</p>
+          <span class="project-link-hint">查看仓库 →</span>
+        </a>
+        <a class="project-card" href="https://github.com/masterpiece2/masterpiece2.github.io" target="_blank" rel="noopener noreferrer">
+          <div class="project-icon">🌐</div>
+          <h3>个人网站</h3>
+          <p>基于 GitHub Pages 搭建的极简个人主页，单文件 HTML 结构。</p>
+          <span class="project-link-hint">查看仓库 →</span>
+        </a>
+        <a class="project-card" href="https://github.com/masterpiece2?tab=repositories" target="_blank" rel="noopener noreferrer">
+          <div class="project-icon">✨</div>
+          <h3>更多项目</h3>
+          <p>探索更多代码实验、学习笔记与 side project，欢迎 Star 与 Fork。</p>
+          <span class="project-link-hint">浏览全部 →</span>
+        </a>
+      </div>
+    </section>
 
-        <section id="projects">
-            <h2>开源项目</h2>
-            <div class="project-list">
-                <a href="https://github.com/你的用户名/项目名" class="project-card" target="_blank">
-                    <h3>🚀 项目名称一</h3>
-                    <p>这是一个关于什么什么的优秀项目，使用了 HTML、CSS 和 JS 编写，解决了一个痛点问题。</p>
-                </a>
-                <a href="https://github.com/你的用户名/项目名" class="project-card" target="_blank">
-                    <h3>🛠️ 项目名称二</h3>
-                    <p>另一个个人独立开发的高能工具，支持自动化操作和跨平台部署。</p>
-                </a>
-            </div>
-        </section>
+    <!-- 联系方式 -->
+    <section class="card contact">
+      <h2 class="section-title" style="justify-content: center;">联系方式</h2>
+      <p class="contact-text">如果你对我的项目感兴趣，欢迎通过 GitHub 与我取得联系。</p>
+      <a class="btn-github" href="https://github.com/masterpiece2" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.395-.135-.345-.72-1.395-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        访问我的 GitHub
+      </a>
+    </section>
 
-        <section id="contact">
-            <h2>联系我</h2>
-            <p style="text-align: center; margin-bottom: 15px;">如果你对我的项目感兴趣，欢迎通过以下方式联系我：</p>
-            <div class="contact-links">
-                <a href="https://github.com/你的用户名" class="btn" target="_blank">GitHub</a>
-                <a href="mailto:your-email@example.com" class="btn email">发送邮件</a>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2026 [你的名字]. Built with ❤️ using HTML & CSS</p>
-        </footer>
-    </div>
-
+    <footer>
+      © 2026 <a href="https://github.com/masterpiece2">masterpiece2</a> · Built with HTML &amp; CSS
+    </footer>
+  </div>
 </body>
 </html>
